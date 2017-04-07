@@ -22,5 +22,12 @@
   command: systemctl start docker
 
 - name: Install Compose
-  command: curl -L https://github.com/docker/compose/releases/download/1.12.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-    chmod +x /usr/local/bin/docker-compose
+  command: curl -O https://github.com/docker/compose/releases/download/1.12.0/docker-compose-`uname -s`-`uname -m`
+  args:
+    chdir: /tmp
+
+- name: Move compose
+  command: mv /tmp/docker-compose /usr/local/bin/.
+
+- name: Add execution permission 
+  command: chmod +x /usr/local/bin/docker-compose
