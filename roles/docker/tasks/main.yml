@@ -22,7 +22,7 @@
   command: systemctl start docker
 
 - name: Install Compose
-  command: curl -O https://github.com/docker/compose/releases/download/1.12.0/docker-compose-`uname -s`-`uname -m`
+  command: "curl -L https://github.com/docker/compose/releases/download/1.12.0/docker-compose-`uname -s`-`uname -m` > docker-compose"
   args:
     chdir: /tmp
 
