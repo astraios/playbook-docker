@@ -1,0 +1,22 @@
+---
+# Install docker
+# We're just following docker's instructions
+# https://store.docker.com/editions/community/docker-ce-server-centos?tab=description
+
+- name: Prerequisites - Install yum-utils
+  command: yum install -y yum-utils
+
+- name: Prerequisites - Add docker repository
+  command: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+- name: Prerequisites - Yum make cache
+  command: yum makecache fast
+
+- name: Install docker
+  command: yum -y install docker-ce
+
+- name: Enable docker service
+  command: systemctl enable docker
+
+- name: Start docker
+  command: systemctl start docker
