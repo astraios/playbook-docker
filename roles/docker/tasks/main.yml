@@ -3,13 +3,13 @@
 # We're just following docker's instructions
 # https://store.docker.com/editions/community/docker-ce-server-centos?tab=description
 
-- name: Prerequisites - Install yum-utils
+- name: Install yum-utils
   command: yum install -y yum-utils
 
-- name: Prerequisites - Add docker repository
+- name: Add docker repository
   command: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
-- name: Prerequisites - Yum make cache
+- name: Yum make cache
   command: yum makecache fast
 
 - name: Install docker
@@ -20,3 +20,7 @@
 
 - name: Start docker
   command: systemctl start docker
+
+- name: Install Compose
+  command: curl -L https://github.com/docker/compose/releases/download/1.12.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+    chmod +x /usr/local/bin/docker-compose
